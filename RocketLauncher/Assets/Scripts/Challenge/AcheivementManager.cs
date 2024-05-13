@@ -9,6 +9,9 @@ public class AchievementManager : MonoBehaviour
 
     [SerializeField] private AchievementSO[] achievements;
     [SerializeField] private AchievementView achievementView;
+    [SerializeField] public RocketMovementC rocketMovementC;
+
+   
 
     private void Awake()
     {
@@ -17,11 +20,25 @@ public class AchievementManager : MonoBehaviour
 
     private void Start()
     {
-        achievementView.CreateAchievementSlots(achievements);  // UI 생성
+        foreach (AchievementSO achive in achievements) achive.isUnlocked = false; // 체크를 위해 시작할때 업적 초기화
+
+        //achievementView.CreateAchievementSlots(achievements);  // UI 생성
     }
 
     // 최고 높이를 달성했을 때 업적 달성 판단, 이벤트 기반으로 설계할 것
-    private void CheckAchievement(float height)
+    public void CheckAchievement(float height)
     {
+        //Debug.Log(achievements[0].displayName);
+        foreach (AchievementSO achive in achievements)
+            if (!achive.isUnlocked)
+            {
+                if (height >= achive.threshold)
+                {
+                    achive.isUnlocked = true;
+                    Debug.Log(achive.displayName);
+                }
+            }
+            
+       // Debug.Log(height);
     }
 }
