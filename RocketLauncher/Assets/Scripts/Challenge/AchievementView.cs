@@ -10,6 +10,14 @@ public class AchievementView : MonoBehaviour
     private GameObject myInstance;
     public AchievementSlot achievementSlot;
 
+
+
+    public void Start()
+    {
+        gameObject.SetActive(false);
+    }
+
+
     public void CreateAchievementSlots(AchievementSO[] achievements) // 동적 생성
     {
         // achievement 데이터에 따라 슬롯을 생성함
@@ -18,7 +26,7 @@ public class AchievementView : MonoBehaviour
         for (int i = 0; i < numOfSlots; i++)
         {
             myInstance = Instantiate(achievementSlotPrefab, parents);
-            myInstance.transform.position = parents.transform.position + new Vector3(0, -i * 2f, 0);
+            myInstance.transform.position = parents.transform.position + new Vector3(0, -i * 1.5f, 0);
             myInstance.SetActive(false);
             achievementSlot = myInstance.GetComponent<AchievementSlot>();
             achievementSlot.Init(achievements[i]);
@@ -32,7 +40,7 @@ public class AchievementView : MonoBehaviour
     public void UnlockAchievement(AchievementSO SO, int threshold) // 해금된 업적 표시
     {
 
-        
+        gameObject.SetActive(true);
 
 
         // UI 반영 로직

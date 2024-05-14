@@ -38,8 +38,12 @@ public class RocketMovementC : MonoBehaviour
         //highScore = transform.position.y;
         //OnHighScoreChanged?.Invoke(highScore);
         //____________________________________________________________
-        if (_rb2d.velocity.y < 0.5f && _rb2d.velocity.y >-0.5f && rocketControllerC._isMoving)
+        if (_rb2d.velocity.y < 0.25f && _rb2d.velocity.y >-0.25f && rocketControllerC._isMoving)
         {
+            if (_rb2d.velocity.y == 0)
+            {
+                return;
+            }
             Debug.Log(transform.position.y);
             if (!(height < transform.position.y)) return;
             height = transform.position.y;
@@ -62,8 +66,8 @@ public class RocketMovementC : MonoBehaviour
     {
         //Debug.Log("Test");
         _rb2d.AddForce(transform.up * SPEED, ForceMode2D.Impulse);
-        _animator.SetBool("isBlinking", true);
-        Invoke("BlinkBool", 1);
+        //_animator.SetBool("isBlinking", true);
+        //Invoke("BlinkBool", 1);
 
 
     }

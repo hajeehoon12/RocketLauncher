@@ -37,7 +37,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 1}
   m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: 0, y: 0.00028527158}
+  m_AnchoredPosition: {x: 0, y: -2.3167876e+38}
   m_SizeDelta: {x: 0, y: 90.18}
   m_Pivot: {x: 0, y: 1}
 --- !u!114 &1875060268261620513
@@ -56,6 +56,7 @@ MonoBehaviour:
   descTxt: {fileID: 5495934228676045574}
   checkMark: {fileID: 8497444090029093252}
   isUnlocked: 0
+  threshold: 0
 --- !u!1 &4445005405847744314
 GameObject:
   m_ObjectHideFlags: 0
