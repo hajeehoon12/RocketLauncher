@@ -28,6 +28,7 @@ public class RocketMovementC : MonoBehaviour
     private void Start()
     {
         OnHighScoreChanged += AchievementManager.Instance.CheckAchievement;
+        //OnHighScoreChanged += AchievementManager.Instance.achievementView.UnlockAchievement;
     }
 
 

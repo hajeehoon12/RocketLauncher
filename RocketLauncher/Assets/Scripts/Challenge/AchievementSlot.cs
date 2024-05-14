@@ -7,18 +7,44 @@ public class AchievementSlot : MonoBehaviour
     [SerializeField] private TextMeshProUGUI descTxt;
     [SerializeField] private GameObject checkMark;
     public bool isUnlocked = false;
+    public int threshold;
 
-    public void Init(AchievementSO data)
+
+
+
+    private void Awake()
     {
-        data.isUnlocked = false;
-        titleTxt.text = data.displayName;
-        descTxt.text = data.displayDesc;
+        //Init(data);
+        isUnlocked = false;
         checkMark.SetActive(false);
     }
 
-    public void MarkAsChecked()
+    public void Update()
     {
-        checkMark.SetActive(true);
-        isUnlocked = true;
+        
+    }
+
+
+
+    public void Init(AchievementSO data) // 내용 초기화
+    {
+        
+        titleTxt.text = data.displayName;
+        descTxt.text = data.displayDesc;
+        isUnlocked = data.isUnlocked;
+        threshold = data.threshold;
+        //checkMark.SetActive(true);
+
+    }
+
+    public void MarkAsChecked() // 조건 달성시 해금 및 활성화처리
+    {
+
+        if (isUnlocked)
+        {
+            checkMark.SetActive(true);
+            gameObject.SetActive(true);
+        }
+        //else gameObject.SetActive(false);
     }
 }
